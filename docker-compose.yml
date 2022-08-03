@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+    nginx:
+        image: nginx:2.0
+        container_name: nginx
+        restart: always
+        tty: true
+        ports:
+            - "8081:8081"
+        volumes:
+            - ./src:/var/www/backend
+            - ./nginx/default.conf:/etc/nginx/sites-available/backend
+        depends_on:
+            - php
+            - pgsql
+
+        networks:
+            - laravel
+
+    pgsql:
+        image: postgres:14
+        container_name: pgsql
+        restart: always
+        tty: true
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_DATABASE=laravel
+            - POSTGRES_USER=admin
+            - POSTGRES_PASSWORD=admin123
+            - POSTGRES_ROOT_PASSWORD=root
+            - SERVICES_TAGS=dev 
+            - SERVICES_NAME=pgsql
+        volumes:
+            - ./pgsql:/var/lib/postgresql/14/main
+        networks:
+            - laravel
+
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: php
+        restart: always
+        tty: true
+        working_dir: /var/www/backend
+        volumes:
+            - ./src:/var/www/backend
+        ports:
+            - "9000:9000"
+        networks:
+            - laravel
+
+networks:
+    laravel:
+        driver: bridge
