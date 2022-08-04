@@ -9,7 +9,7 @@ services:
         ports:
             - "8081:8081"
         volumes:
-            - ./src:/var/www/backend
+            - ./php/src:/var/www/backend
             - ./nginx/backend.conf:/etc/nginx/sites-available/backend
         depends_on:
             - php
@@ -44,7 +44,7 @@ services:
         tty: true
         working_dir: /var/www/backend
         volumes: 
-            - ./src:/var/www/backend
+            - ./php/src:/var/www/backend
         ports:
             - "9000:9000"
         networks:
