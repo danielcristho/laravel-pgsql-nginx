@@ -16,7 +16,7 @@ services:
             - pgsql
 
         networks:
-            - laravel
+            - mynetwork
 
     pgsql:
         image: postgres:14
@@ -31,9 +31,10 @@ services:
             - POSTGRES_PASSWORD=admin123
             - POSTGRES_ROOT_PASSWORD=root
         volumes:
-            - ./pgsql:/var/lib/postgresql/data
+            - :/var/lib/postgressql/data
+            - ./pgsql/postgresql.conf:/etc/postgresql/14/main/postgresql.conf
         networks:
-            - laravel
+            - mynetwork
 
     php:
         build:
@@ -48,14 +49,18 @@ services:
         ports:
             - "9000:9000"
         networks:
-            - laravel
+            - mynetwork
 
     composer:
-        image: composer
+        image: composer:latest
+        container_name: composer
         volumes:
-            - .:/backend
+            - .:/var/www/backend
         command: install        
 
+volumes:
+    postgres_data:
+
 networks:
-    laravel:
+    mynetwork:
         driver: bridge
