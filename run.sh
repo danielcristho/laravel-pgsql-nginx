@@ -34,7 +34,6 @@ then
 (install docker)    => Install Docker
 (deploy stack)      => Deploy Stack
 (all)               => Semua
-
 >  '
     read inputPilihan
 fi    
