@@ -31,7 +31,7 @@ services:
             - POSTGRES_PASSWORD=admin123
             - POSTGRES_ROOT_PASSWORD=root
         volumes:
-            - :/var/lib/postgressql/data
+            - ./:/var/lib/postgressql/data
             - ./pgsql/postgresql.conf:/etc/postgresql/14/main/postgresql.conf
         networks:
             - mynetwork
