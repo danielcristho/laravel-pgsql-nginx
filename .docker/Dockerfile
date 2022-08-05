@@ -35,7 +35,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 RUN useradd -ms /bin/bash docker
 
-USER docker
+USER root
 
 #RUN php artisan key:generate
 
