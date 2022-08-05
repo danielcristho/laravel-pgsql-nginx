@@ -1,2 +1,2 @@
 [srv1]
-159.223.83.251 ansible_user=username
+159.223.83.251 ansible_user=root

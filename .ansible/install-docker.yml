@@ -43,7 +43,7 @@
 
     - name: Add user to 'docker' group 
       user:
-        name: username
+        name: docker
         groups: "docker"
         append: yes
 
@@ -63,5 +63,5 @@
       git:
         repo: https://github.com/danielcristho/laravel-pgsql-nginx.git
         clone: yes 
-        dest: /home/username/stack/
+        dest: /home/docker/stack/
         update: yes
