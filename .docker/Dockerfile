@@ -2,8 +2,6 @@ FROM php:8.0-fpm
 
 WORKDIR /var/www/backend
 
-USER docker
-
 RUN apt-get update && apt-get install -y \
     build-essential \
     libicu-dev \ 
@@ -35,9 +33,10 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-RUN useradd -G www-data,root -u $uid -d /home/$user $user
-RUN mkdir -p /home/$user/.composer && \
-    chown -R $user:$user /home/$user
+RUN useradd -ms /bin/bash admin
+
+USER docker
+
 
 #RUN php artisan key:generate
 
