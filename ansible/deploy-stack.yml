@@ -5,6 +5,6 @@
   tasks:
     - name: deploy Docker Compose stack
       community.docker.docker_compose:
-        project_src: /home/docker/stack/.docker/
+        project_src: /home/docker/stack/docker/
         files:
           - docker-compose.yml
