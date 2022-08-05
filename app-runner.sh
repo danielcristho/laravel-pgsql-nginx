@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
 INVENTORY_FILE=".ansible/hosts"
-PLAYBOOK_FILE=".ansible/install-docker.yml"
-
+PLAYBOOK_FILE_1=".ansible/install-docker.yml"
+PLAYBOOK_FILE_2=".ansible/deploy-stack.yml"
 
 echo "Run Playbook..."
-ansible-playbook $PLAYBOOK_FILE -i $INVENTORY_FILE 
+ansible-playbook $PLAYBOOK_FILE_1 -i $INVENTORY_FILE 
 
 echo "Build Docker-Compose..."
-docker-compose -H "ssh://username@address" -f /home/docker/stack/.docker/docker-compose.yml up --build -d
-docker-compose -H "ssh://username@address" -f /home/docker/stack/.docker/docker-compose.yml ps -a
+ansible-playbook $PLAYBOOK_FILE_2 -i $INVENTORY_FILE 
 
 echo "Done..."
