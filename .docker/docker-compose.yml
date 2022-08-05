@@ -7,7 +7,7 @@ services:
         restart: always
         tty: true
         ports:
-            - "8081:8081"
+            - "6000:6000"
         volumes:
             - ./php/src:/var/www/backend
             - ./nginx/backend.conf:/etc/nginx/sites-available/backend
