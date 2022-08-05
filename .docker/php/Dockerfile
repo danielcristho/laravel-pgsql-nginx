@@ -2,6 +2,8 @@ FROM php:8.0-fpm
 
 WORKDIR /var/www/backend
 
+USER docker
+
 RUN apt-get update && apt-get install -y \
     build-essential \
     libicu-dev \ 

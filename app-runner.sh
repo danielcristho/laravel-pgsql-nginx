@@ -8,7 +8,7 @@ echo "Run Playbook..."
 ansible-playbook $PLAYBOOK_FILE -i $INVENTORY_FILE 
 
 echo "Build Docker-Compose..."
-docker-compose -H "ssh://root@srv1" -f /home/docker/stack/.docker/docker-compose.yml up --build -d
-docker-compose -H "ssh://root@srv1" -f /home/docker/stack/.docker/docker-compose.yml ps -a
+docker-compose -H "ssh://username@address" -f /home/docker/stack/.docker/docker-compose.yml up --build -d
+docker-compose -H "ssh://username@address" -f /home/docker/stack/.docker/docker-compose.yml ps -a
 
 echo "Done..."
