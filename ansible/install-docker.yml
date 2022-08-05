@@ -1,0 +1,67 @@
+---
+- hosts: srv1
+  become: true
+
+  tasks:
+    - name: Install aptitude
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: true
+
+    - name: Install required system packages
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+          - gnupg-agent 
+
+        state: latest
+        update_cache: true
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg 
+        state: present 
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Install Docker
+      apt:
+        name: "{{ item }}"
+        state: latest
+        update_cache: true
+      loop:
+        - docker-ce 
+        - docker-ce-cli 
+        - containerd.io
+
+    - name: Add user to 'docker' group 
+      user:
+        name: docker
+        groups: "docker"
+        append: yes
+
+    - name: Restart after Installation
+      service:
+        name: docker 
+        state: restarted 
+        enabled: yes
+
+    - name: Install Docker-Compose&Set Permission
+      get_url: 
+        url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose 
+        mode: '755' 
+
+    - name: Clone Stack Repository
+      git:
+        repo: https://github.com/danielcristho/laravel-pgsql-nginx.git
+        clone: yes 
+        dest: /home/docker/stack/
+        update: yes
