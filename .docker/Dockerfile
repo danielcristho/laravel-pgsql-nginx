@@ -33,8 +33,6 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-RUN useradd -ms /bin/bash docker
-
 USER root
 
 #RUN php artisan key:generate
