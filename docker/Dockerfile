@@ -1,6 +1,6 @@
 FROM php:8.0-fpm
 
-WORKDIR /home/docker/stack/
+WORKDIR /var/www/backend
 
 RUN apt-get update && apt-get install -y \
     build-essential \
