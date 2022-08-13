@@ -19,7 +19,7 @@ services:
             - mynetwork
 
     pgsql:
-        image: postgres:14
+        image: timescale/timescaledb-ha:pg14-latest
         container_name: pgsql
         restart: always
         tty: true
@@ -33,6 +33,7 @@ services:
         volumes:
             - ./:/var/lib/postgressql/data
             - ./pgsql/postgresql.conf:/etc/postgresql/14/main/postgresql.conf
+            - ./timescale.sql:/docker-entrypoint-initdb.d/dump.sql
         networks:
             - mynetwork
 
@@ -56,7 +57,8 @@ services:
         container_name: composer
         volumes:
             - .:/var/www/backend
-        command: install        
+        command: install  
+        depends_on: php      
 
 volumes:
     postgres_data:
