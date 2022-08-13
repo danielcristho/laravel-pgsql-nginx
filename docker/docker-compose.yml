@@ -58,7 +58,8 @@ services:
         volumes:
             - .:/var/www/backend
         command: install  
-        depends_on: php      
+        depends_on:
+            - php
 
 volumes:
     postgres_data:
