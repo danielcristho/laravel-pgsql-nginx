@@ -7,7 +7,7 @@
       git:
         repo: https://github.com/danielcristho/laravel-pgsql-nginx.git
         clone: yes 
-        dest: /home/docker/stack
+        dest: /home/docker/
         update: yes
 
     - name: deploy Docker Compose stack
