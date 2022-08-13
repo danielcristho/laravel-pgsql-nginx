@@ -5,8 +5,7 @@
   tasks:
     - name: Clone Docker Project 
       git:
-        url: https://github.com/danielcristho/laravel-pgsql-nginx.git
-        description: Setup Project 
+        repo: https://github.com/danielcristho/laravel-pgsql-nginx.git
         clone: yes 
         dest: /home/docker/stack
         update: yes

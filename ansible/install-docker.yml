@@ -41,7 +41,7 @@
         - docker-ce-cli 
         - containerd.io
 
-    - name: Add user to 'docker' group 
+    - name: Setup new user 
       user:
         name: docker
         groups: "docker"
