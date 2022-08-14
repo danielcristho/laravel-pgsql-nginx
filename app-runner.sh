@@ -4,7 +4,7 @@ INVENTORY_FILE="ansible/hosts"
 PLAYBOOK_FILE_1="ansible/install-docker.yml"
 PLAYBOOK_FILE_2="ansible/deploy-stack.yml"
 
-echo "Run Playbook..."
+echo "Install Docker&Dependencies..."
 ansible-playbook $PLAYBOOK_FILE_1 -i $INVENTORY_FILE 
 
 echo "Build Docker-Compose..."
