@@ -4,7 +4,7 @@ services:
     nginx:
         image: nginx:1.9
         container_name: nginx
-        restart: always
+        restart: unless-stopped
         tty: true
         ports:
             - "5000:5000"
@@ -21,7 +21,7 @@ services:
     pgsql:
         image: timescale/timescaledb-ha:pg14-latest
         container_name: pgsql
-        restart: always
+        restart: unless-stopped
         tty: true
         ports:
             - 5432:5432
@@ -39,7 +39,7 @@ services:
             context: .
             dockerfile: Dockerfile
         container_name: php
-        restart: always
+        restart: unless-stopped
         tty: true
         working_dir: /var/www/backend
         volumes: 

@@ -35,4 +35,6 @@ USER root
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
+RUN chmod 777 -R storage/
+
 RUN chmod 777 -R /var/www/backend
