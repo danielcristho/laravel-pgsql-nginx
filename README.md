@@ -1,6 +1,7 @@
 <br />
 <div align="center">
   <h3 align="center">Ansible: Docker, Laravel, PgSQL and Nginx Projects</h3>
+</div>
 
 ## Features
 
@@ -13,7 +14,7 @@
 
 ## Build
 
-- Add remote server add to [inventory](https://github.com/danielcristho/laravel-pgsql-nginx/blob/master/ansible/hosts)
+- Add remote server add to [inventory](https://github.com/danielcristho/laravel-pgsql-nginx/blob/master/ansible/hosts) file
 - Run command ``` ./apprunner.sh ```
 - Run command ```docker exec -it php php artisan key:generate``` in remote server terminal
 - Run command ```docker-exec -it php php artisan migrate```
