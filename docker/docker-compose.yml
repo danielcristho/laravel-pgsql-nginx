@@ -25,13 +25,9 @@ services:
         tty: true
         ports:
             - 5432:5432
-        environment:
-            - POSTGRES_DATABASE=laravel
-            - POSTGRES_USER=admin
-            - POSTGRES_PASSWORD=admin123
         volumes:
             - ./pgsql/postgresql.conf:/etc/postgresql/14/main/postgresql.conf
-            - ./pgsql/timescale.sql:/docker-entrypoint-initdb.d/timescale.sql:ro
+            - ./pgsql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
         networks:
             - mynetwork
 
