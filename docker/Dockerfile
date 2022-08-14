@@ -31,10 +31,8 @@ RUN docker-php-ext-install \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-
 USER root
 
-#RUN php artisan key:generate
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 RUN chmod 777 -R /var/www/backend
