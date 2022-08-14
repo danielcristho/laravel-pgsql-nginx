@@ -1,5 +1,5 @@
 ---
-- hosts: srv1
+- hosts: {server-hostname}
   become: true
 
   tasks:
