@@ -2,7 +2,7 @@ version: '3'
 
 services:
     nginx:
-        image: nginx:1.9
+        image: nginx:1.19
         container_name: nginx
         restart: unless-stopped
         tty: true
@@ -26,7 +26,12 @@ services:
         ports:
             - 5432:5432
         environment:
+            POSTGRES_DATABASE: laravel
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: admin123
             POSTGRES_HOST_AUTH_METHOD: trust
+            SERVICE_TAGS: dev
+            SERVICE_NAME: pgsql
             
         volumes:
             - ./pgsql/postgresql.conf:/etc/postgresql/14/main/postgresql.conf

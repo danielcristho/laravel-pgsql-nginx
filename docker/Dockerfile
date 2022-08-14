@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-configure zip
 
+RUN docker-php-ext-install pdo_pgsql pgsql pdo
+
 RUN docker-php-ext-install \ 
     bcmath \
     mbstring \
@@ -35,6 +37,6 @@ USER root
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-RUN chmod 777 -R storage/
-
 RUN chmod 777 -R /var/www/backend
+
+RUN chmod 777 -R /var/www/backend/storage

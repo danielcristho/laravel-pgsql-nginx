@@ -1,2 +1,2 @@
-[srv1]
-159.223.83.251 ansible_user=root
+[hostname]
+0.0.0.0 ansible_user=root
