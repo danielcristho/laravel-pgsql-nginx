@@ -25,6 +25,9 @@ services:
         tty: true
         ports:
             - 5432:5432
+        environment:
+            POSTGRES_HOST_AUTH_METHOD: trust
+            
         volumes:
             - ./pgsql/postgresql.conf:/etc/postgresql/14/main/postgresql.conf
             - ./pgsql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
