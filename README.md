@@ -1,6 +1,6 @@
 <br />
 <div align="center">
-  <h3 align="center">Ansible: Docker, Laravel, PgSQL and Nginx Projects</h3>
+  <h3 align="center">Ansible: Deploy Docker Projects</h3>
 </div>
 
 ## Features
