@@ -4,8 +4,8 @@ WORKDIR /var/www/backend
 
 RUN apt-get update && apt-get install -y \
     build-essential \
-    libicu-dev \ 
-    libzip-dev \ 
+    libicu-dev \
+    libzip-dev \
     libpng-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
@@ -14,16 +14,22 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     jpegoptim optipng pngquant gifsicle \
-    vim \ 
-    git \ 
-    curl \ 
-    wget
+    vim \
+    git \
+    curl \
+    wget \
+    apt-transport-https
 
 RUN docker-php-ext-configure zip
 
-RUN docker-php-ext-install pdo_pgsql pgsql pdo
+# RUN docker-php-ext-install pdo_pgsql pdo
 
-RUN docker-php-ext-install \ 
+# Install Postgre PDO
+RUN apt-get install -y libpq-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
+
+RUN docker-php-ext-install \
     bcmath \
     mbstring \
     pcntl \
@@ -38,5 +44,3 @@ USER root
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 RUN chmod 777 -R /var/www/backend
-
-RUN chmod 777 -R /var/www/backend/storage
