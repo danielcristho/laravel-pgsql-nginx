@@ -13,10 +13,9 @@
 - [Postgres with TimescaleDB](https://docs.timescale.com/install/latest/installation-docker/#install-self-hosted-timescaledb-from-a-pre-built-container)
 
 ## Build
-
-- Add remote server to [inventory](https://github.com/danielcristho/laravel-pgsql-nginx/blob/master/ansible/hosts) file
-- Run ``` bash build.sh ```
+- Run ```cd docker/php/src```
 - Run ```cp .env.example``` ```.env```.
+- Run ```docker-compose up -d --build```
 - Run command ```docker exec -it php php artisan key:generate``` in remote server terminal
 - Run command ```docker-exec -it php php artisan migrate``` in remote server terminal
 
